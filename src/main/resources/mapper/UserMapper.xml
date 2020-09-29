@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+	<sql id="table">
+		select * from stus
+	</sql>
+	<select id="selectAll" resultType="Stu">
+		select * from stus
+	</select>
+	<select id="selectOne" parameterType="QueryVo" resultType="Stu">
+		<include refid="table" />
+		<where>
+			name like "%"#{stu.name}"%"
+		</where>
+	</select>
+</mapper>
